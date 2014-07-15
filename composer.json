@@ -15,6 +15,6 @@
     ],
     "require": {},
     "autoload": {
-        "files": ["src/functions/fn.php"]
+        "files": ["src/fn.php"]
     }
 }
