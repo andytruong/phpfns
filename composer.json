@@ -1,0 +1,20 @@
+{
+    "name": "andytruong/phpfns",
+    "type": "library",
+    "description": "Useful PHP functions",
+    "keywords": ["api", "render"],
+    "homepage": "https://github.com/andytruong/phpfns",
+    "license": "MIT",
+    "authors": [
+      {
+          "name": "Andy Truong"
+          , "email": "thehongtt@gmail.com"
+          , "homepage": "http://v3k.net/"
+          , "role": "Lead Developer"
+      }
+    ],
+    "require": {},
+    "autoload": {
+        "files": ["src/functions/fn.php"]
+    }
+}
