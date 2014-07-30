@@ -1,7 +1,7 @@
 <?php
 
 use AndyTruong\TypedData\Manager as TypedDataManager;
-use AndyTruong\TypedData\Plugin\PluginInterface;
+use AndyTruong\TypedData\Plugin\DataTypeInterface;
 use Zend\EventManager\EventManager;
 
 /**
@@ -76,34 +76,28 @@ function at_event_manager($name = 'default', $event_manager = NULL)
     return $managers['default'];
 }
 
-/**
- * Wrapper for typped-data, an API to make sure data provided is matched to its schema.
- *
- * Examples: Check test cases under ./tests/common/Services/TypedData/ for
- *  example usage.
- *
- * We can provide extra typed-data via event manager:
- *
- *  $em = new EventManager();
- *  $em->attach('at.typed_data.plugin.load', function ($event) {
- *    // @var $manager TypedDataManager
- *    // CustomTypeClass must implements AndyTruong\Common\TypedData\Plugin\PluginInterface
- *    $manager->registerPlugin('type.custom_type', 'CustomTypeClass');
- *  });
- *  at_event_manager('at.typed_data', $em);
- *
- * @param array $definition
- * @param mixed $input
- * @return PluginInterface
- * @throws \Exception
- */
-function at_data($definition, $input = NULL)
-{
-    static $manager = null;
+if (!function_exists('yaml_parse')) {
 
-    if (is_null($manager)) {
-        $manager = new TypedDataManager();
+    /**
+     * Read YAML input.
+     *
+     * @param  string $input The string to parse as a YAML document stream.
+     * @return mixed
+     */
+    function yaml_parse($input)
+    {
+        $parser = new AndyTruong\Yaml\YamlParser();
+        return $parser->parse($input);
     }
 
-    return $manager->getPlugin($definition, $input);
+}
+
+if (!function_exists('yaml_emit')) {
+
+    function yaml_emit($data)
+    {
+        $dumper = new AndyTruong\Yaml\YamlDumper();
+        return $dumper->dump($data);
+    }
+
 }
