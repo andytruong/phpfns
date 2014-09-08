@@ -9,7 +9,7 @@ Super simple library, provide common reused PHP functions.
 composer require andytruong/phpfns:~0.1.0
 ```
 
-To have legacy support for yaml_parse() and yaml_emit() functions, we need include `andytruong/yaml` library:
+To have legacy supporting for `yaml_parse()` and `yaml_emit()` functions, we need include `andytruong/yaml` library:
 
 ```bash
 composer require andytruong/yaml:~0.1.0
