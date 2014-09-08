@@ -1,7 +1,7 @@
 <?php
 
-use AndyTruong\TypedData\Manager as TypedDataManager;
-use AndyTruong\TypedData\Plugin\DataTypeInterface;
+use AndyTruong\Yaml\YamlDumper;
+use AndyTruong\Yaml\YamlParser;
 use Zend\EventManager\EventManager;
 
 /**
@@ -41,6 +41,20 @@ function at_newv($class_name, $argv = array())
         return $reflector->newInstanceArgs($argv);
     }
     return $reflector->newInstance();
+}
+
+/**
+ * Camelizes a given string.
+ *
+ * @param  string $string Some string
+ *
+ * @return string The camelized version of the string
+ */
+function at_camelize($string)
+{
+    return preg_replace_callback('/(^|_|\.)+(.)/', function ($match) {
+        return ('.' === $match[1] ? '_' : '') . strtoupper($match[2]);
+    }, $string);
 }
 
 /**
@@ -86,7 +100,7 @@ if (!function_exists('yaml_parse')) {
      */
     function yaml_parse($input)
     {
-        $parser = new AndyTruong\Yaml\YamlParser();
+        $parser = new YamlParser();
         return $parser->parse($input);
     }
 
@@ -96,7 +110,7 @@ if (!function_exists('yaml_emit')) {
 
     function yaml_emit($data)
     {
-        $dumper = new AndyTruong\Yaml\YamlDumper();
+        $dumper = new YamlDumper();
         return $dumper->dump($data);
     }
 

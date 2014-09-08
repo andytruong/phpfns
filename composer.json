@@ -13,7 +13,10 @@
             "role": "Lead Developer"
         }
     ],
-    "require": {
+    "suggest": {
+        "andytruong/yaml": "Legacy provide supporting for yaml_parse/yaml_emit functions"
+    },
+    "require-dev": {
         "andytruong/yaml": "~0.1.0"
     },
     "autoload": {
