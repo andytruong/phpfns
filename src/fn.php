@@ -1,7 +1,7 @@
 <?php
 
-use AndyTruong\TypedData\Manager as TypedDataManager;
-use AndyTruong\TypedData\Plugin\DataTypeInterface;
+use AndyTruong\Yaml\YamlDumper;
+use AndyTruong\Yaml\YamlParser;
 use Zend\EventManager\EventManager;
 
 /**
@@ -86,7 +86,7 @@ if (!function_exists('yaml_parse')) {
      */
     function yaml_parse($input)
     {
-        $parser = new AndyTruong\Yaml\YamlParser();
+        $parser = new YamlParser();
         return $parser->parse($input);
     }
 
@@ -96,7 +96,7 @@ if (!function_exists('yaml_emit')) {
 
     function yaml_emit($data)
     {
-        $dumper = new AndyTruong\Yaml\YamlDumper();
+        $dumper = new YamlDumper();
         return $dumper->dump($data);
     }
 
