@@ -44,6 +44,20 @@ function at_newv($class_name, $argv = array())
 }
 
 /**
+ * Camelizes a given string.
+ *
+ * @param  string $string Some string
+ *
+ * @return string The camelized version of the string
+ */
+function at_camelize($string)
+{
+    return preg_replace_callback('/(^|_|\.)+(.)/', function ($match) {
+        return ('.' === $match[1] ? '_' : '') . strtoupper($match[2]);
+    }, $string);
+}
+
+/**
  * Get event Manager.
  *
  * @staticvar array $managers
