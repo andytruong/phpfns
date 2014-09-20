@@ -58,6 +58,33 @@ function at_camelize($string)
 }
 
 /**
+ * Helper function easy access array item:
+ *
+ * Use echo at_array_item($array, 'path.to.item');
+ * instead of echo $array['path']['to']['item];
+ *
+ * @param array $array
+ * @param string $path
+ * @param mixed $defaultValue
+ * @return mixed
+ */
+function at_array_item(array $array, $path, $defaultValue = null)
+{
+    $current = $array;
+    $p = strtok($path, '.');
+
+    while ($p !== false) {
+        if (!isset($current[$p])) {
+            return $defaultValue;
+        }
+        $current = $current[$p];
+        $p = strtok('.');
+    }
+
+    return $current;
+}
+
+/**
  * Get event Manager.
  *
  * @staticvar array $managers
