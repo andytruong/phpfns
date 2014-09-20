@@ -63,12 +63,12 @@ function at_camelize($string)
  * Use echo at_array_item($array, 'path.to.item');
  * instead of echo $array['path']['to']['item];
  *
- * @param array $array
+ * @param array|Iterator $array
  * @param string $path
  * @param mixed $defaultValue
  * @return mixed
  */
-function at_array_item(array $array, $path, $defaultValue = null)
+function at_array_item($array, $path, $defaultValue = null)
 {
     $current = $array;
     $p = strtok($path, '.');
