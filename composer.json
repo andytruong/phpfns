@@ -16,6 +16,9 @@
     "suggest": {
         "andytruong/yaml": "Legacy provide supporting for yaml_parse/yaml_emit functions"
     },
+    "require": {
+        "php": ">=5.4"
+    },
     "require-dev": {
         "andytruong/yaml": "~0.1.0"
     },
