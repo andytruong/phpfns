@@ -74,7 +74,7 @@ function at_underscore($string)
  * Use echo at_array_item($array, 'path.to.item');
  * instead of echo $array['path']['to']['item];
  *
- * @param array|Iterator $array
+ * @param array|IteratorIterator $array
  * @param string $path
  * @param mixed $defaultValue
  * @return mixed
