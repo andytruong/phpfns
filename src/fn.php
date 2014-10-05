@@ -58,6 +58,17 @@ function at_camelize($string)
 }
 
 /**
+ * A string to underscore.
+ *
+ * @param string $string The string to underscore
+ * @return string The underscored string
+ */
+function at_underscore($string)
+{
+    return strtolower(preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\d])([A-Z])/'], ['\\1_\\2', '\\1_\\2'], strtr($string, '_', '.')));
+}
+
+/**
  * Helper function easy access array item:
  *
  * Use echo at_array_item($array, 'path.to.item');
