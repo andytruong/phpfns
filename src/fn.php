@@ -96,6 +96,34 @@ function at_array_item($array, $path, $defaultValue = null)
 }
 
 /**
+ * From https://github.com/igorw/retry
+ *
+ * @param int $retries
+ * @param callable $fn
+ * @param callable $onError Provide on error callback if you want deplay ore similar.
+ * @throws Exception
+ */
+function at_retry($retries, callable $fn, callable $onError = null)
+{
+    beginning:
+    try {
+        return $fn();
+    }
+    catch (Exception $e) {
+        if ($onError) {
+            $onError($e);
+        }
+
+        if (!$retries) {
+            throw $e;
+        }
+
+        $retries--;
+        goto beginning;
+    }
+}
+
+/**
  * Get event Manager.
  *
  * @staticvar array $managers
