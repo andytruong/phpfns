@@ -1,5 +1,5 @@
 {
-    "name": "andytruong/phpfns",
+    "name": "atphp/phpfns",
     "type": "library",
     "description": "Useful PHP functions",
     "keywords": ["api", "render"],
