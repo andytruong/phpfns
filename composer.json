@@ -3,7 +3,7 @@
     "type": "library",
     "description": "Useful PHP functions",
     "keywords": ["api", "render"],
-    "homepage": "https://github.com/andytruong/phpfns",
+    "homepage": "https://github.com/atphp/phpfns",
     "license": "MIT",
     "authors": [
         {
